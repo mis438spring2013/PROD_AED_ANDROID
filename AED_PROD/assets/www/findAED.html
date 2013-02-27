@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Device Properties Example</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1;" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile.structure-1.2.0.min.css" />
+	<link rel="stylesheet" href="file:///android_asset/www/css/AndroidHoloDarkLight.min.css" />
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+  </head>
+  <body>
+  <div data-role="page" data-theme="c">
+  <div data-role="header" data-id="geoLocate" data-position="fixed"  >
+		<h1>AED Locator</h1>
+		<a href="index1.html"data-icon="home" data-mini="true" data-inline="true" data-iconpos="notext">&nbsp;</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a href="file:///android_asset/www/index1.html" data-transition="none">CLOSEST AED</a></li>
+				<li><a href="file:///android_asset/www/findAED.html"class="ui-btn-active ui-state-persist" data-transition="none">FIND AN AED</a></li>
+				<li><a href="file:///android_asset/www/addAED.html"data-transition="none" >ADD AN AED</a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div><!-- /header -->
+	<div data-role="content">
+		Find the closest AED:
+		<p> <label for="basic">Enter State:</label>
+			<input type="text" name="state" id="basic" value="" data-mini="true" />
+			<label for="basic">Enter City:</label>
+			<input type="text" name="city" id="basic" value="" data-mini="true" />
+			
+			</p>
+	</div>
+	</div>
+  </body>
+</html>

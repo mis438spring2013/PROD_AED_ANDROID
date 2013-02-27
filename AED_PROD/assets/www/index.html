@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="format-detection" content="telephone=no" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0;" />
+        
+       <!--Test <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" /> --> 
+        <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+		 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+		<script type="text/javascript" src="file:///android_asset/www/js/jquery.ui.map.js"></script>
+		<link rel="stylesheet" href="file:///android_asset/www/css/map.css" />
+		
+<script type="text/javascript">
+
+
+function gmapLoad(latitude, longitude){
+	//alert('Hello'+ latitude +' '+ longitude);
+	//var zoom = $('#map_canvas').gmap('option', 'zoom');
+	//$('#map_canvas').gmap('option', 'zoom', 7);
+	var clientPos = new google.maps.LatLng(latitude, longitude);
+	var icon = 'file:///android_asset/www/img/aed.png';
+	$('#map_canvas').gmap({'disableDefaultUI':true}).bind('init', function(ev, map) {
+		$('#map_canvas').gmap('addMarker', {'icon':icon, 'position': clientPos, 'bounds': true}).click(function() {
+			$('#map_canvas').gmap('openInfoWindow', {'content': 'AED'}, this);
+		});
+	});
+
+}
+</script>
+	<script type="text/javascript" charset="utf-8" src="file:///android_asset/www/cordova-2.3.0.js"></script>
+	<script type="text/javascript" charset="utf-8" src="file:///android_asset/www/nativeLocation.js"></script>
+    <script type="text/javascript" charset="utf-8">
+//<![CDATA[
+    // Wait for Cordova to load    //    
+    document.addEventListener("deviceready", onDeviceReady, false);    
+
+    
+    function onDeviceReady() {  
+    	callNativePlugin('success'); }   
+    // onSuccess Geolocation    //    
+    function callNativePlugin( returnSuccess ) {
+    	NativeGeolocation.callNativeFunction( nativePluginResultHandler, nativePluginErrorHandler, returnSuccess );
+    }
+                                       
+    function nativePluginResultHandler (result) {
+    	var jsonObj = result;
+    	var lat = jsonObj.latitude;
+    	var lon = jsonObj.longitude;
+    	var acc = jsonObj.accuracy;
+    	gmapLoad(lat,lon);
+    	//alert(lat+","+lon+"Accuracy: "+acc);
+       //alert("SUCCESS: \r\n"+result );
+    }
+
+    function nativePluginErrorHandler (error) {
+       alert("ERROR: \r\n"+error );
+    }
+  </script>
+<head> 
+	<title>Locate Closed AED</title> 
+</head>
+		
+  
+
+<body > 
+	<div data-role="page" data-id="page_id" data-theme="b">
+
+	<div data-role="header" data-id="geoLocate" data-position="fixed"  >
+		<h1>AED Locator</h1>
+		<a href="file:///android_asset/www/index.html" data-icon="bars">Log In</a>
+		<a href="file:///android_asset/www/index.html" data-icon="gear">Settings</a>
+		<div data-role="navbar">
+			<ul>
+				<li><a href="file:///android_asset/www/index.html" class="ui-btn-active ui-state-persist" data-transition="none">CLOSEST AED</a></li>
+				<li><a href="file:///android_asset/www/findAED.html" data-prefetch="true"data-transition="none" >FIND AN AED </a></li>
+				<li><a href="file:///android_asset/www/addAED.html" data-prefetch="true"data-transition="none" >ADD AN AED</a></li>
+			</ul>
+		</div><!-- /navbar -->
+	</div><!-- /header -->
+		<div data-role="content">	
+				<div id="map_canvas" class="page-map" style="width: 100%; height: 100%; padding: 0;"></div>
+				</div>
+		</div>
+
+	</div>
+
+</body>
+</html>
