@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<link rel="stylesheet" href="file:///android_asset/www/css/jqueryMobileStructure.css" />
+		<link rel="stylesheet" href="file:///android_asset/www/css/AndroidHoloDarkLight.min.css" />
+        <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+<title>AED Home page</title>
+
+		<script type=" text/javascript">
+		$('body').bind('hideOpenMenus', function(){
+    $("ul:jqmData(role='menu')").find('li > ul').hide();
+}); 
+var menuHandler = function(e) {
+    $('body').trigger('hideOpenMenus');
+    $(this).find('li > ul').show();
+    e.stopPropagation();
+};
+$("ul:jqmData(role='menu') li > ul li").click(function(e) {
+   $('body').trigger('hideOpenMenus');
+e.stopPropagation();
+});
+$('body').delegate("ul:jqmData(role='menu')",'click',menuHandler);
+$('body').click(function(e){
+   $('body').trigger('hideOpenMenus');
+});
+
+
+		</script>
+<body>
+<div data-role="page" data-id="home" data-theme="c">
+
+<div data-role="header" data-id="geoLocate" data-position="fixed"  >
+ <ul id="menu-left" data-role="menu">
+            <li>
+               <span data-role="button" data-icon="arrow-d" data-iconpos="left"></span>
+               <ul data-role="listview" data-inset="true">
+                   <li data-icon="false"><a href="#A1">A1</a></li>
+                   <li data-icon="false"><a href="#A2">Option A2 is really long</a></li>
+                   <li data-icon="false"><a href="#logoutDialog" data-rel="dialog">Logout</a></li>
+               </ul>
+            </li>
+        </ul>
+		<h1></h1>
+		<!-- Get Gamer Profile Pic Here -->
+		<a href="index1.html"data-icon="arrow-r" data-mini="true" class="ui-btn-right" data-inline="true" data-iconpos="notext">&nbsp;</a>
+</div>
+<div data-role="content"  style="margin:0 auto;
+margin-left:auto;
+margin-right:auto;
+align:center;
+text-align:center;">	
+<ul data-role="listview" data-inset="true">
+	<li><a href ="userProfile.html">Gamer Profile</a></li>
+	<!-- Get Gamer Profile and Embed profile+gamEX1.html to redirect to profile page -->
+	<li><a href ="profile.html">User Settings</a></li>
+	<li><a href ="signup.html">Sign Up</a></li>
+</ul>
+</div>	
+</div>
+
+</body>
+</html>

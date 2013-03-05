@@ -9,15 +9,8 @@
         <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>		
 <script type="text/javascript">
-function gmapLoad(lat,lng) {
-	alert("Hello");
-	var center = new google.maps.LatLng(lat,lng);
-		var myOptions = {
-		zoom: 14,
-		center: center,
-		mapTypeId: google.maps.MapTypeId.ROADMAP
-		}
-	var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+function loadUser(){
+	
 }
 </script>
 	<script type="text/javascript" charset="utf-8" src="file:///android_asset/www/cordova-2.3.0.js"></script>
@@ -33,7 +26,7 @@ function gmapLoad(lat,lng) {
     		});
     	
     	$.mobile.loading( 'show', {
-    		text: 'Finding Closest AED',
+    		text: 'Loading User Profile',
     		textVisible: true,
     		theme: 'z',
     		html: ""
@@ -42,8 +35,8 @@ function gmapLoad(lat,lng) {
     
     }  
    function callNativePlugin( returnSuccess ) {
-    	
-    	NativeGeolocation.callNativeFunction( nativePluginResultHandler, nativePluginErrorHandler, returnSuccess );
+    	<!---> 
+    	//NativeGeolocation.callNativeFunction( nativePluginResultHandler, nativePluginErrorHandler, returnSuccess );
     }
                                        
     function nativePluginResultHandler (result) {
@@ -70,19 +63,76 @@ function gmapLoad(lat,lng) {
 	<div data-role="page" data-id="index" data-theme="c">
 
 	<div data-role="header" data-id="geoLocate" data-position="fixed"  >
-		<h1>AED Locator</h1>
+		<h1>Gamer Profile</h1>
 		<a href="home.html"data-icon="arrow-l" data-mini="true" data-inline="true" data-iconpos="notext">&nbsp;</a>
 		<div data-role="navbar">
 			<ul>
-				<li><a href="file:///android_asset/www/index1.html" class="ui-btn-active ui-state-persist" data-transition="none">CLOSEST AED</a></li>
-				<li><a href="file:///android_asset/www/findAED.html" data-prefetch="true"data-transition="none" >FIND AN AED </a></li>
-				<li><a href="file:///android_asset/www/addAED.html" data-prefetch="true"data-transition="none" >ADD AN AED</a></li>
+				<li><a href="#recent"  data-transition="none">Recent Activity</a></li>
+				<li><a href="#acheivements" data-prefetch="true"data-transition="none" >Achievements </a></li>
+				<li><a href="#leaderboards" class="ui-btn-active ui-state-persist"data-prefetch="true"data-transition="none" >Leaderboards</a></li>
 			</ul>
 		</div><!-- /navbar -->
 	</div><!-- /header -->
 	<!-- style="position:absolute;top:0;bottom:0;left:0;right:0"  --> 
-		<div data-role="content" style="height:100%;width:100%;">
-			 <div id="map_canvas"style="position:absolute;top:20px;bottom:0;left:0;right:0"></div>
+		<div data-role="content" style="height:100%;width:100%;" >
+			<table data-role="table" data-mode="reflow" class="ui-responsive table-stroke"> 
+				<thead>
+				<tr>
+				<th data-priority="1">Rank </th>
+				<th data-priority="2">GamerID</th>
+				<th data-priority="3">Score</th>
+				<th data-priority="4">Last Activity</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+				<th>1</th>
+				<td>mrAEDFinder</td>
+				<td>66,250</td>
+				<td>3/2/2013</td>
+				</tr>
+				<tr>
+				<th>2</th>
+				<td>johnSmith</td>
+				<td>60,250</td>
+				<td>3/2/2013</td>
+				</tr>
+				<tr>
+				<th>3</th>
+				<td>garryJo</td>
+				<td>57,250</td>
+				<td>3/2/2013</td>
+				</tr>
+				<tr>
+				<th>4</th>
+				<td>gamerMe</td>
+				<td>55,200</td>
+				<td>3/1/2013</td>
+				</tr>
+				<tr>
+				<th>5</th>
+				<td>iGame</td>
+				<td>52,250</td>
+				<td>3/1/2013</td>
+				</tr>
+				<tr>
+				<th>6</th>
+				<td>johnAED</td>
+				<td>50,000</td>
+				<td>2/28/2013</td>
+				</tr>
+				<tr>
+				<th>7</th>
+				<td>aedSla</td>
+				<td>46,250</td>
+				<td>2/27/2013</td>
+				</tr>
+				
+				</tbody>
+			
+			
+			</table>			 	
+			 
 		</div>
 	
 		
